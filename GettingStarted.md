@@ -18,7 +18,7 @@ cd ~/plutus/plutus-playground-client && npm run start
 
 Now we can open a browser and go to https://localhost:8009 to access Plutus Playground.
 
-Open another nerminal tab and lauch a prelude terminal.
+Open another terminal tab and lauch a prelude terminal.
 
 ```
 cd plutus && sudo nix-shell

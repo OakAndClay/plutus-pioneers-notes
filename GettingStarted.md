@@ -12,7 +12,7 @@ Then we can launch the plutus server.
 Open another terminal tab and activate another nix shell. Then lauch the client.
 
 ```
-cd ~/plutus && sudo nix-shell && \
+cd ~/plutus && sudo nix-shell
 cd ~/plutus/plutus-playground-client && npm run start
 ```
 
@@ -21,7 +21,7 @@ Now we can open a browser and go to https://localhost:8009 to access Plutus Play
 Open another nerminal tab and lauch a prelude terminal.
 
 ```
-cd plutus && sudo nix-shell && \
+cd plutus && sudo nix-shell
 cd /home/[user]/plutus-pioneer-program/code/[week] && cabal repl
 ```
 

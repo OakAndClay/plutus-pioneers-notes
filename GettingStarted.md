@@ -22,7 +22,7 @@ Open another nerminal tab and lauch a prelude terminal.
 
 ```
 cd plutus && sudo nix-shell
-cd /home/oakandclay/plutus-pioneer-program/code/week02
+cd /home/[user]/plutus-pioneer-program/code/[week]
 cabal repl
 ```
 

@@ -35,5 +35,5 @@ I like to use VScode to look at the contract files that are included in the http
 
 I am following along with lars in the video and makeing comments in the code as notes. I will save those notes in this repo under the week of the course.
 
-Using http://learnyouahaskell.com/chapters as a reference where I don't understand specifics in the code.
+Using http://learnyouahaskell.com/chapters as a reference where I don't understand specifics in the code. I am siting this in the comments with the page number.
 

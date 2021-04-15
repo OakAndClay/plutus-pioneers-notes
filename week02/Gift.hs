@@ -31,6 +31,8 @@ import           Text.Printf         (printf)
 -- This allows mkValidator to be used within the $$()
 mkValidator :: Data -> Data -> Data -> ()
 mkValidator _ _ _ = ()
+-- this defines what the validator needs to allow the transaction. It doesn't need anything in this example.
+-- Any wallet can grab the funds without any requirements.
 
 validator :: Validator
 validator = mkValidatorScript $$(PlutusTx.compile [|| mkValidator ||])

@@ -29,6 +29,11 @@ cd plutus && sudo nix-shell
 cd /home/[user]/plutus-pioneer-program/code/[week]
 cabal repl
 ```
+### Personal Preferences
 
+I like to use VScode to look at the contract files that are included in the https://github.com/input-output-hk/plutus-pioneer-program
 
+I am following along with lars in the video and makeing comments in the code as notes. I will save those notes in this repo under the week of the course.
+
+Using http://learnyouahaskell.com/chapters as a reference where I don't understand specifics in the code.
 

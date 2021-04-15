@@ -16,7 +16,7 @@ Open another terminal tab and activate another nix shell. Then lauch the client.
 
 ```
 cd ~/plutus && sudo nix-shell
-cd ~/plutus/plutus-playground-client
+cd plutus-playground-client
 npm run start
 ```
 

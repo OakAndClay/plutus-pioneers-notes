@@ -7,13 +7,17 @@ After building nix inside the plutus repo we can launch nix-shell within that di
 
 Then we can launch the plutus server.
 
-` cd ~/plutus/plutus-playground-client && plutus-playground-server ` 
+``` 
+cd ~/plutus/plutus-playground-client
+plutus-playground-server 
+``` 
 
 Open another terminal tab and activate another nix shell. Then lauch the client.
 
 ```
 cd ~/plutus && sudo nix-shell
-cd ~/plutus/plutus-playground-client && npm run start
+cd ~/plutus/plutus-playground-client
+npm run start
 ```
 
 Now we can open a browser and go to https://localhost:8009 to access Plutus Playground.
@@ -22,7 +26,8 @@ Open another terminal tab and launch a prelude terminal.
 
 ```
 cd plutus && sudo nix-shell
-cd /home/[user]/plutus-pioneer-program/code/[week] && cabal repl
+cd /home/[user]/plutus-pioneer-program/code/[week]
+cabal repl
 ```
 
 

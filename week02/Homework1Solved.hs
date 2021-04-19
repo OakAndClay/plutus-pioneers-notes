@@ -8,7 +8,7 @@
 {-# LANGUAGE TypeFamilies        #-}
 {-# LANGUAGE TypeOperators       #-}
 
-module Week02.Homework1 where
+module Week02.Homework1Solved where
 
 import           Control.Monad        hiding (fmap)
 import           Data.Map             as Map

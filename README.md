@@ -25,7 +25,7 @@ Now we can open a browser and go to https://localhost:8009 to access Plutus Play
 Open another terminal tab and launch a prelude terminal.
 
 ```
-cd plutus && sudo nix-shell
+cd ~/plutus && sudo nix-shell
 cd /home/[user]/plutus-pioneer-program/code/[week]
 cabal repl
 ```

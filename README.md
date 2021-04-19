@@ -8,7 +8,7 @@ After building nix inside the plutus repo we can launch nix-shell within that di
 Then we can launch the plutus server.
 
 ``` 
-cd ~/plutus/plutus-playground-client
+cd plutus-playground-client
 plutus-playground-server 
 ``` 
 

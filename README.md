@@ -29,19 +29,6 @@ cd ~/plutus && sudo nix-shell
 cd /home/[user]/plutus-pioneer-program/code/[week]
 cabal repl
 ```
-### Personal Preferences
-
-I like to use VSCode. https://code.visualstudio.com/Download
-
-I have installed two Haskell extensions.
-https://marketplace.visualstudio.com/items?itemName=haskell.haskell
-https://marketplace.visualstudio.com/items?itemName=justusadam.language-haskell
-
-VSCode is great for working with the code for the class. You can find the Plutus Pioneers github repo here. https://github.com/input-output-hk/plutus-pioneer-program.
-
-I am following along with Lars in the video and makeing comments in the code as notes. I will save those notes in this repo under the week of the course.
-
-I am using http://learnyouahaskell.com/chapters and http://book.realworldhaskell.org/read/ as references when I don't understand the code. I am citing this in the comments with the page number.
 
 ### Updating Plutus Dependancy
 
@@ -63,5 +50,17 @@ git fetch && git rebase
 git pull
 ```
 
+### Personal Preferences
 
+I like to use VSCode. https://code.visualstudio.com/Download
+
+I have installed two Haskell extensions.
+https://marketplace.visualstudio.com/items?itemName=haskell.haskell
+https://marketplace.visualstudio.com/items?itemName=justusadam.language-haskell
+
+VSCode is great for working with the code for the class. You can find the Plutus Pioneers github repo here. https://github.com/input-output-hk/plutus-pioneer-program.
+
+I am following along with Lars in the video and makeing comments in the code as notes. I will save those notes in this repo under the week of the course.
+
+I am using http://learnyouahaskell.com/chapters and http://book.realworldhaskell.org/read/ as references when I don't understand the code. I am citing this in the comments with the page number.
 

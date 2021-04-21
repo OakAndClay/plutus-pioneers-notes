@@ -37,3 +37,15 @@ I am following along with lars in the video and makeing comments in the code as 
 
 Using http://learnyouahaskell.com/chapters and http://book.realworldhaskell.org/read/ as references when I don't understand the code. I am citing this in the comments with the page number.
 
+### Updating Plutus Dependancy
+
+The Plutus depencies are constantly changing. It is in heavy acctive development. We need to keep the version that we are working with up to date.
+
+```
+cd ~/plutus
+git fetch && git rebase
+git checkout [current commit hash]
+nix build -f
+```
+
+

@@ -31,11 +31,15 @@ cabal repl
 ```
 ### Personal Preferences
 
-I like to use VScode to look at the contract files that are included in the https://github.com/input-output-hk/plutus-pioneer-program
+I like to use VScode to work with the contract files that are included in the https://github.com/input-output-hk/plutus-pioneer-program. 
+
+I have installed two extensions that are great for Haskell.
+https://marketplace.visualstudio.com/items?itemName=haskell.haskell
+https://marketplace.visualstudio.com/items?itemName=justusadam.language-haskell
 
 I am following along with lars in the video and makeing comments in the code as notes. I will save those notes in this repo under the week of the course.
 
-Using http://learnyouahaskell.com/chapters and http://book.realworldhaskell.org/read/ as references when I don't understand the code. I am citing this in the comments with the page number.
+I am using http://learnyouahaskell.com/chapters and http://book.realworldhaskell.org/read/ as references when I don't understand the code. I am citing this in the comments with the page number.
 
 ### Updating Plutus Dependancy
 

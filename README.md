@@ -49,7 +49,7 @@ The Plutus depencies are constantly changing. It is in heavy acctive development
 cd ~/plutus
 git fetch && git rebase
 git checkout [current commit hash]
-nix build -f
+sudo nix build -f default.nix plutus.haskell.packages.plutus-core
 ```
 
 

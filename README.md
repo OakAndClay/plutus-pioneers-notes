@@ -56,5 +56,12 @@ git fetch && git rebase
 git checkout [current commit hash]
 sudo nix build -f default.nix plutus.haskell.packages.plutus-core
 ```
+### Update the Plutus-Pioneers-Program Directory
+```
+cd ~/plutus-pioneers-program
+git fetch && git rebase
+git pull
+```
+
 
 

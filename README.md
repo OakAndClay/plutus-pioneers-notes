@@ -45,6 +45,9 @@ I am using http://learnyouahaskell.com/chapters and http://book.realworldhaskell
 
 The Plutus depencies are constantly changing. It is in heavy acctive development. We need to keep the version that we are working with up to date.
 
+This is a good resource for setting this up.
+https://docs.plutus-community.com/docs/setup/Ubuntu.html
+
 ```
 cd ~/plutus
 git fetch && git rebase

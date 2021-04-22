@@ -23,3 +23,9 @@ This is a field in the TxInfo data type. It handles time and defines validation 
 This transaction is valid between this and that slot. It is specified in the transaction. These fields are checked before the validation scripts run.
 
 We need to be able to define the time at which a transaction can be validated.
+
+##### Slot Deffinition
+https://github.com/input-output-hk/plutus/blob/master/plutus-ledger-api/src/Plutus/V1/Ledger/Slot.hs
+
+##### Interval Deffinition
+https://github.com/input-output-hk/plutus/blob/master/plutus-ledger-api/src/Plutus/V1/Ledger/Interval.hs

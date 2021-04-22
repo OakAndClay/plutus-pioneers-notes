@@ -6,11 +6,10 @@ Can be a custom type as long as it implements the isData type class.
 #### Redeemer
 Can be a custom type as long as it implements the isData type class.
 #### Context
-This is of type Script Context. It used to be ValidatorCtx.
-
-We will be looking more closely at the context this week.
-
 https://github.com/input-output-hk/plutus/blob/master/plutus-ledger-api/src/Plutus/V1/Ledger/Contexts.hs
+
+This is of type Script Context. It used to be ValidatorCtx.
+We will be looking more closely at the context this week.
 
 ##### Validation can happen in the wallet.
 Transactions can fail when a UTXO has been consumed by another wallet. The transaction will fail without any fees.

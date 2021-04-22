@@ -24,8 +24,8 @@ This transaction is valid between this and that slot. It is specified in the tra
 
 We need to be able to define the time at which a transaction can be validated.
 
+#### SlotRange = Interval Slot
 ##### Slot Deffinition
 https://github.com/input-output-hk/plutus/blob/master/plutus-ledger-api/src/Plutus/V1/Ledger/Slot.hs
-
 ##### Interval Deffinition
 https://github.com/input-output-hk/plutus/blob/master/plutus-ledger-api/src/Plutus/V1/Ledger/Interval.hs

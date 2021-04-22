@@ -1,11 +1,11 @@
 # Notes
 
-### Need three things to unlock a script address.
-#### Datum
+## Need three things to unlock a script address.
+### Datum
 Can be a custom type as long as it implements the isData type class.
-#### Redeemer
+### Redeemer
 Can be a custom type as long as it implements the isData type class.
-#### Context
+### Context
 https://github.com/input-output-hk/plutus/blob/master/plutus-ledger-api/src/Plutus/V1/Ledger/Contexts.hs
 
 This is of type Script Context. It used to be ValidatorCtx.

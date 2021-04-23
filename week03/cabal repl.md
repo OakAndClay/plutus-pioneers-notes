@@ -40,4 +40,16 @@ Prelude returns:
 ```
 True
 ```
+We can use member to test the range of the interval by plugging different numbers into member and checking to see if the result is what we expect.
+
+Lets try the from funcion
+```
+from (Slot 20)
+```
+Prelude returns:
+```
+Interval {ivFrom = LowerBound (Finite (Slot {getSlot = 20})) True, ivTo = UpperBound PosInf True}
+```
+Lower bound is a finite number, 20 and it is included in the range. The upper boud is possitive infinity and it is included in the range.
+
 

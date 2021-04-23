@@ -17,7 +17,7 @@ import Plutus.V1.Ledger.Interval
 Slot 3
 3 :: Slot
 ```
-Prelude will return
+Prelude returns:
 ```
 Slot {getSlot = 3}
 ```
@@ -25,3 +25,19 @@ Lets use a interval helper function to construct an interval.
 ```
 interval (Slot 3) 10
 ```
+Prelude returns:
+```
+Interval {ivFrom = LowerBound (Finite (Slot {getSlot = 3})) True, ivTo = UpperBound (Finite (Slot {getSlot = 10})) True}
+```
+ivFrom: The beginning of the interval
+Finite: Indicates that it is a specific time, 3. True indicates that 3 is included.
+
+Check if 5 is included in the SlotRange
+```
+member 5 $ interval (Slot 3) 10
+```
+Prelude returns:
+```
+True
+```
+

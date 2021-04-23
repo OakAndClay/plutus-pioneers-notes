@@ -1,3 +1,11 @@
+Fire up the repl
+```
+cd ~/plutus
+nix-shell
+cd .. && cd plutus-pioneer-program/code/week03
+cabal repl
+```
+
 Import the relevant files
 
 ```

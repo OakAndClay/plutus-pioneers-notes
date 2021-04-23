@@ -21,3 +21,7 @@ Prelude will return
 ```
 Slot {getSlot = 3}
 ```
+Lets use a interval helper function to construct an interval.
+```
+interval (Slot 3) 10
+```

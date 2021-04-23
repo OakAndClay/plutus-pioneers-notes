@@ -81,4 +81,13 @@ contains checks to see if the second interval falls within the bounds of the fir
 ```
 contains (Interval l1 h1) (Interval l2 h2) = l1 <= l2 && h2 <= h1
 ```
+Here is an example of a false return
+```
+contains (to $ Slot 100) $ interval 30 105
+```
+Prelude returns:
+```
+False
+```
+h2 is greater than h1
 

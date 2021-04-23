@@ -42,7 +42,10 @@ cd ~/plutus
 git fetch && git rebase
 git checkout [current commit hash]
 sudo nix build -f default.nix plutus.haskell.packages.plutus-core
+cd ~/plutus && sudo nix-shell
 ```
+It will take a while for it to execute nix-shell on the first go around ~15 minutes.
+
 ### Update the Plutus-Pioneers-Program Directory
 ```
 cd ~/plutus-pioneers-program

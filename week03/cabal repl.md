@@ -21,7 +21,7 @@ Prelude returns:
 ```
 Slot {getSlot = 3}
 ```
-#### Lets use a interval helper function to construct an interval.
+#### interval s s'
 ```
 interval (Slot 3) 10
 ```
@@ -32,7 +32,7 @@ Interval {ivFrom = LowerBound (Finite (Slot {getSlot = 3})) True, ivTo = UpperBo
 ivFrom: The beginning of the interval
 Finite: Indicates that it is a specific time, 3. True indicates that 3 is included.
 
-#### Use member to heck if 5 is included in the SlotRange
+#### member a i
 ```
 member 5 $ interval (Slot 3) 10
 ```
@@ -42,7 +42,7 @@ True
 ```
 We can use member to test the range of the interval by plugging different numbers into member and checking to see if the result is what we expect.
 
-#### Lets try the from funcion
+#### from s
 ```
 from (Slot 20)
 ```
@@ -52,7 +52,7 @@ Interval {ivFrom = LowerBound (Finite (Slot {getSlot = 20})) True, ivTo = UpperB
 ```
 Lower bound is a finite number, 20 and it is included in the range. The upper boud is possitive infinity and it is included in the range.
 
-#### Now the to helper funcion
+#### to s
 ```
 to (Slot 100)
 ```
@@ -68,5 +68,17 @@ member (-124523) $ to (Slot 100)
 Prelude returns:
 ```
 True
+```
+#### contains (Interval l1 h1) (Interval l2 h2)
+```
+contains (to $ Slot 100) $ interval 30 50
+```
+Prelude returns:
+```
+True
+```
+contains checks to see if the second interval falls within the bounds of the first. The code looks like this.
+```
+contains (Interval l1 h1) (Interval l2 h2) = l1 <= l2 && h2 <= h1
 ```
 

@@ -60,6 +60,7 @@ I like to use VSCode. https://code.visualstudio.com/Download
 I have installed two Haskell extensions.
 
 https://marketplace.visualstudio.com/items?itemName=haskell.haskell
+
 https://marketplace.visualstudio.com/items?itemName=justusadam.language-haskell
 
 VSCode is great for working with the code for the class. You can find the Plutus Pioneers github repo here. https://github.com/input-output-hk/plutus-pioneer-program.

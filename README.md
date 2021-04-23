@@ -58,6 +58,7 @@ git pull
 I like to use VSCode. https://code.visualstudio.com/Download
 
 I have installed two Haskell extensions.
+
 https://marketplace.visualstudio.com/items?itemName=haskell.haskell
 https://marketplace.visualstudio.com/items?itemName=justusadam.language-haskell
 

@@ -1,5 +1,5 @@
 https://www.youtube.com/watch?v=Lk1eIVm_ZTQ&t=2445s
-45:15
+@ 45:15
 
 #### Getting the pubKeyHash for plutus playground
 

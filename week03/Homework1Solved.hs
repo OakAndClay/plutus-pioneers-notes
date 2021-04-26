@@ -43,28 +43,27 @@ PlutusTx.unstableMakeIsData ''VestingDatum
 -- This should validate if either beneficiary1 has signed the transaction and the current slot is before or at the deadline
 -- or if beneficiary2 has signed the transaction and the deadline has passed.
 mkValidator :: VestingDatum -> () -> ScriptContext -> Bool
-mkValidator dat _ ctx = 
-    traceIfFalse "We need a beneficiaries signature to proceed" $ checkSig1 || checkSig2    &&
-    traceIfFalse "The deadline has not yet been reached"          checkDeadline             ||
-    traceIfFalse "The bneficiary has not signed the transaction"  checkSig2                 &&
-    traceIfFalse "The deadline hasa not yet passed"               checkDeadlineAfter        
+mkValidator dat () ctx = 
+    traceIfFalse "We need a beneficiaries signature to proceed" $  checkSig1 || checkSig2    &&
+    traceIfFalse "The deadline has not yet been reached"           checkDeadline             ||
+    traceIfFalse "The beneficiary has not signed the transaction"  checkSig2                 &&
+    traceIfFalse "The deadline has not yet passed"                 checkDeadlineAfter        
 
-    where 
-        info :: TxInfo
-        info = scriptContextTxInfo
+  where 
+    info :: TxInfo
+    info = scriptContextTxInfo ctx
 
-        checkSig1 :: Bool
-        checkSig1 = beneficiary1 dat `elem` txInfoSignatories info
+    checkSig1 :: Bool
+    checkSig1 = beneficiary1 dat `elem` txInfoSignatories info
 
-        checkSig2 :: Bool
-        checkSig2 = beneficiary2 dat `elem` txInfoSignatories info
+    checkSig2 :: Bool
+    checkSig2 = beneficiary2 dat `elem` txInfoSignatories info
 
-        checkDeadline :: Bool
-        checkDeadline = to (deadline dat)  `contains` txInfoValidRange info
+    checkDeadline :: Bool
+    checkDeadline = to (deadline dat)  `contains` txInfoValidRange info
 
-        checkDeadlineAfter :: Bool
-        checkDeadline = after $ to (deadline dat) `contains` txInfoValidRange info
-
+    checkDeadlineAfter :: Bool
+    checkDeadlineAfter = (Interval (strictLowerBound (deadline dat)) (UpperBound PosInf True)) `contains` txInfoValidRange info
 
 data Vesting
 instance Scripts.ScriptType Vesting where

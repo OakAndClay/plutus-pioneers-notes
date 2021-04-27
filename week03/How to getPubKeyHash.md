@@ -10,7 +10,7 @@ sudo nix-shell
 cd ..
 cd plutus-pioneer-program/code/week03
 cabal repl
-inport Wallet.Emulator
+import Wallet.Emulator
 import Ledger
 pubKeyHash $ walletPubKey $ Wallet 2
 ```

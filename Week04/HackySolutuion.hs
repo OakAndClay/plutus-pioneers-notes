@@ -66,7 +66,7 @@ payTrace2 x y = do
         }
     void $ Emulator.waitNSlots 1
     h2 <- activateContractWallet (Wallet 1) payContract2
-    -- Had to activate a second contract wallet because the first one was shutting down after the failed transaction.
+-- Had to activate a second contract wallet because the first one was shutting down after the failed transaction.
     callEndpoint @"pay" h2 $ PayParams
         { ppRecipient = pubKeyHash $ walletPubKey $ Wallet 2
         , ppLovelace  = y

@@ -32,8 +32,10 @@ import           Text.Printf            (printf)
 import           Wallet.Emulator.Wallet
 
 {-# INLINABLE mkPolicy #-}
+-- much like a validator scrypt but it only has ScriptContext as a field and it returns a Bool.
 mkPolicy :: ScriptContext -> Bool
 mkPolicy _ = True
+-- This is the minting policy that allows arbitrary minting and burning of tokens.
 
 policy :: Scripts.MonetaryPolicy
 policy = mkMonetaryPolicyScript $$(PlutusTx.compile [|| Scripts.wrapMonetaryPolicy mkPolicy ||])

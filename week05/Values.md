@@ -55,5 +55,6 @@ There is a funcion that builds an amount of Ada it is `lovelaceValueOf`
 :t lovelaceValueOf
 lovelaceValueOf :: Integer -> Value
 ```
+It takes an integer and  returns a value `lovelaceValueOf 123` will return a Value Type. `Value (Map [(,Map [("",123])])` The first Map has an empty space after. This is the CurrencySymbol for Ada the "" after the second map is the TokenName of Ada.
 
 * [Ada.hs](https://github.com/input-output-hk/plutus/blob/master/plutus-ledger-api/src/Plutus/V1/Ledger/Ada.hs)

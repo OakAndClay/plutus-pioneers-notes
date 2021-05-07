@@ -85,3 +85,4 @@ flattenValue v
      * If we have a trasnaction where we want to create or burn tokens then for each native token the CurrencySymbol is looked up.
      * The CurrencySymbol points to the mintingpolicy script that is included in the transaction.
      * The mintingpolicy script determines if the transaction has a right to mint or burn tokens.
+  * Ada has no CurrencySymbol hash because there is no mintingpolicy script. No way to mint or burn Ada.

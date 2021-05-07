@@ -28,6 +28,7 @@ newtype TokenName = TokenName { unTokenName :: Builtins.ByteString }
     deriving anyclass (Hashable, NFData)
     deriving Pretty via (PrettyShow TokenName)
 ```
+ADA is one type of AssetClass. Custom native tokens are also asset classes.
 ```
 newtype AssetClass = AssetClass { unAssetClass :: (CurrencySymbol, TokenName) }
     deriving stock (Generic)

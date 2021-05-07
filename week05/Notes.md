@@ -10,4 +10,14 @@ newtype Value = Value { getValue :: Map.Map CurrencySymbol (Map.Map TokenName In
     deriving newtype (Serialise, PlutusTx.IsData)
     deriving Pretty via (PrettyShow Value)
 ```
+* All native assets includeing ADA are identified by a CurrencySymbol and a TokenName
+```
+newtype CurrencySymbol = CurrencySymbol { unCurrencySymbol :: Builtins.ByteString }
+    deriving (IsString, Show, Serialise, Pretty) via LedgerBytes
+    deriving stock (Generic)
+    deriving newtype (Haskell.Eq, Haskell.Ord, Eq, Ord, PlutusTx.IsData)
+    deriving anyclass (Hashable, ToJSONKey, FromJSONKey,  NFData)
+
+```
+
 * [Ada.hs](https://github.com/input-output-hk/plutus/blob/master/plutus-ledger-api/src/Plutus/V1/Ledger/Ada.hs)

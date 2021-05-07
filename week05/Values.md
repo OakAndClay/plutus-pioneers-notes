@@ -64,3 +64,12 @@ import Plutus.V1.Ledger.Value
 singleton :: CurrencySymbol -> TokenName 0> Integer -> Value
 ```
 This will construct an AssetClass with an amount of that asset. `singleton "a8ff" "ABC" 7` will return `Value (Map [(a8ff,Map [("ABC",7)])])`
+We can mappend AssetClasses of different types into a single value `singleton "a8ff" "ABC" 7 <> lovelaceValueOf 43 <> singleton "a8ff" "XYZ" 100`. We can extract the ammount of a specific AssetClass from a Value using `valueOf`.
+```
+let v = singleton "a8ff" "ABC" 7 <> lovelaceValueOf 43 <> singleton "a8ff" "XYZ" 100
+:t valueOf
+valueOf :: Value -> CurrencySymbol -> TokenName -> Integer
+valueOf v "a8ff" "XYZ"
+100
+```
+

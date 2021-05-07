@@ -4,7 +4,7 @@ The original english auction contract was auctioning an NFT.
 #### Relevant types defined in [plutus-ledger-api](https://github.com/input-output-hk/plutus/tree/master/plutus-ledger-api/src/Plutus/V1/Ledger)
 * [Value.hs](https://github.com/input-output-hk/plutus/blob/master/plutus-ledger-api/src/Plutus/V1/Ledger/Value.hs)
 
-* The Map in Value is equivelant to mapping from an asset class to an integer.
+* The Map in Value is equivelant to mapping from an asset class (ByteString) to an integer.
 ```
 newtype Value = Value { getValue :: Map.Map CurrencySymbol (Map.Map TokenName Integer) }
     deriving stock (Generic)

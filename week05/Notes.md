@@ -12,6 +12,14 @@ newtype Value = Value { getValue :: Map.Map CurrencySymbol (Map.Map TokenName In
     deriving newtype (Serialise, PlutusTx.IsData)
     deriving Pretty via (PrettyShow Value)
 ```
+* ADA is one type of AssetClass. Custom native tokens are also asset classes.
+```
+newtype AssetClass = AssetClass { unAssetClass :: (CurrencySymbol, TokenName) }
+    deriving stock (Generic)
+    deriving newtype (Haskell.Eq, Haskell.Ord, Eq, Ord, PlutusTx.IsData, Serialise, Show)
+    deriving anyclass (Hashable, NFData, ToJSON, FromJSON)
+    deriving Pretty via (PrettyShow (CurrencySymbol, TokenName))
+```
 
 * All native assets includeing ADA are identified by a CurrencySymbol and a TokenName
   * Both are newtype wrappers around a ByteString
@@ -30,14 +38,6 @@ newtype TokenName = TokenName { unTokenName :: Builtins.ByteString }
     deriving newtype (Haskell.Eq, Haskell.Ord, Eq, Ord, PlutusTx.IsData)
     deriving anyclass (Hashable, NFData)
     deriving Pretty via (PrettyShow TokenName)
-```
-ADA is one type of AssetClass. Custom native tokens are also asset classes.
-```
-newtype AssetClass = AssetClass { unAssetClass :: (CurrencySymbol, TokenName) }
-    deriving stock (Generic)
-    deriving newtype (Haskell.Eq, Haskell.Ord, Eq, Ord, PlutusTx.IsData, Serialise, Show)
-    deriving anyclass (Hashable, NFData, ToJSON, FromJSON)
-    deriving Pretty via (PrettyShow (CurrencySymbol, TokenName))
 ```
 
 * [Ada.hs](https://github.com/input-output-hk/plutus/blob/master/plutus-ledger-api/src/Plutus/V1/Ledger/Ada.hs)

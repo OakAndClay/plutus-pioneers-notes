@@ -2,7 +2,7 @@
 
 The original english auction contract was auctioning an NFT.
 #### Relevant types defined in [plutus-ledger-api](https://github.com/input-output-hk/plutus/tree/master/plutus-ledger-api/src/Plutus/V1/Ledger)
-* [Value.hs](https://github.com/input-output-hk/plutus/blob/master/plutus-ledger-api/src/Plutus/V1/Ledger/Value.hs)
+* [Ledger.Value](https://github.com/input-output-hk/plutus/blob/master/plutus-ledger-api/src/Plutus/V1/Ledger/Value.hs)
 
 * The Map in Value is equivelant to mapping from an asset class (ByteString) to an integer.
 ```
@@ -57,4 +57,10 @@ lovelaceValueOf :: Integer -> Value
 ```
 It takes an integer and  returns a value `lovelaceValueOf 123` will return a Value Type. `Value (Map [(,Map [("",123])])` The first Map has an empty space after, this is the CurrencySymbol for Ada. The "" after the second map is the TokenName of Ada. `lovelaceValueOf` is a [Monoid](http://learnyouahaskell.com/functors-applicative-functors-and-monoids#monoids). You can use `mappend` to combine monoids. There is an opperator that can do this. `lovelaceValueOf 123 <> lovelaceValueOf 10` this will return `Value (Map [(,Map [("",133])])`
 
-* [Ada.hs](https://github.com/input-output-hk/plutus/blob/master/plutus-ledger-api/src/Plutus/V1/Ledger/Ada.hs)
+How do we create value using native tokens?
+
+```
+:t singleton
+singleton :: CurrencySymbol -> TokenName 0> Integer -> Value
+```
+This will construct an AssetClass with an amount of that asset. `singleton "a8ff" "ABC" 7` will return `Value (Map [(a8ff,Map [("ABC",7)])])`

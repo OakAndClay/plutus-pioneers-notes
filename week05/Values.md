@@ -77,3 +77,10 @@ Another useful funciton is `flattenValue`it is of type `flattenValue :: Value ->
 flattenValue v
 [(a8ff,"ABC",7),(a8ff,"XYZ",100),(,"",43)]
 ```
+Why do we need a CurrencySymbol and a TokenName?
+* Minting Policies
+  * A transaction can not create or delete tokens.
+  * The reason the CurrencySymbol is hexidecimal.
+     * It is the hash of the mintingpolicy script
+     * If we have a trasnaction where we want to create or burn tokens then for each native token the CurrencySymbol is looked up.
+     * The CurrencySymbol points to the mintingpolicy script that is included in the transaction.

@@ -50,4 +50,10 @@ adaToken :: TokenName
 ```
 Both are empty ByteStrings.
 
+There is a funcion that builds an amount of Ada it is `lovelaceValueOf`
+```
+:t lovelaceValueOf
+lovelaceValueOf :: Integer -> Value
+```
+
 * [Ada.hs](https://github.com/input-output-hk/plutus/blob/master/plutus-ledger-api/src/Plutus/V1/Ledger/Ada.hs)

@@ -72,4 +72,8 @@ valueOf :: Value -> CurrencySymbol -> TokenName -> Integer
 valueOf v "a8ff" "XYZ"
 100
 ```
-
+Another useful funciton is `flattenValue`it is of type `flattenValue :: Value -> [(CurrencySymbol, TokenName, Integer)]`.
+```
+flattenValue v
+[(a8ff,"ABC",7),(a8ff,"XYZ",100),(,"",43)]
+```

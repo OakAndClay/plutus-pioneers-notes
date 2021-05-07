@@ -28,4 +28,12 @@ newtype TokenName = TokenName { unTokenName :: Builtins.ByteString }
     deriving anyclass (Hashable, NFData)
     deriving Pretty via (PrettyShow TokenName)
 ```
+```
+newtype AssetClass = AssetClass { unAssetClass :: (CurrencySymbol, TokenName) }
+    deriving stock (Generic)
+    deriving newtype (Haskell.Eq, Haskell.Ord, Eq, Ord, PlutusTx.IsData, Serialise, Show)
+    deriving anyclass (Hashable, NFData, ToJSON, FromJSON)
+    deriving Pretty via (PrettyShow (CurrencySymbol, TokenName))
+```
+
 * [Ada.hs](https://github.com/input-output-hk/plutus/blob/master/plutus-ledger-api/src/Plutus/V1/Ledger/Ada.hs)

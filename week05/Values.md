@@ -41,11 +41,13 @@ newtype TokenName = TokenName { unTokenName :: Builtins.ByteString }
 ```
 Fire up the repl. `import Plutus.V1.Ledger.Ada` and also `:set -OverloadedStrings` which allows us to enter ByteStrings as literal strings. CurrencySymbol and TokenName implement the IsString class. This allows us to enter them as literal strings.
 
-In the [Ledger.Ada](https://github.com/input-output-hk/plutus/blob/master/plutus-ledger-api/src/Plutus/V1/Ledger/Ada.hs) module there is a function called adaSymbol.
+In the [Ledger.Ada](https://github.com/input-output-hk/plutus/blob/master/plutus-ledger-api/src/Plutus/V1/Ledger/Ada.hs) module there are two functions adaSymbol and adaToken.
 ```
 :t adaSymbol
 adaSymbol :: CurrencySymbol
+:t adaToken
+adaToken :: TokenName
 ```
-It gives us the currency symbol of the Ada AssetClass
+Both are empty ByteStrings.
 
 * [Ada.hs](https://github.com/input-output-hk/plutus/blob/master/plutus-ledger-api/src/Plutus/V1/Ledger/Ada.hs)

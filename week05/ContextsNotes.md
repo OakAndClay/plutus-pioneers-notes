@@ -1,4 +1,4 @@
-*Validation Rehash
+* Validation Rehash
   * If
     * Don't have a public key address
     * Do have script address

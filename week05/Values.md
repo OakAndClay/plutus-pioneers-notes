@@ -22,7 +22,7 @@ newtype AssetClass = AssetClass { unAssetClass :: (CurrencySymbol, TokenName) }
 ```
 
 * All native assets includeing ADA are identified by a CurrencySymbol and a TokenName
-  * Both are newtype wrappers around a ByteString
+  * Both are newtype wrappers around a [ByteString](http://book.realworldhaskell.org/read/efficient-file-processing-regular-expressions-and-file-name-matching.html)
 ```
 newtype CurrencySymbol = CurrencySymbol { unCurrencySymbol :: Builtins.ByteString }
     deriving (IsString, Show, Serialise, Pretty) via LedgerBytes

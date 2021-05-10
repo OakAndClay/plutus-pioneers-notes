@@ -35,6 +35,8 @@ data TxInfo = TxInfo
     -- ^ Hash of the pending transaction (excluding witnesses)
     } deriving (Generic)
 ```
+TxInfo contains all the context info about the transaction that is being validated.
+
  * ScriptPurpose
 ```
 -- | Purpose of the script that is currently running
@@ -44,3 +46,4 @@ data ScriptPurpose
     | Rewarding StakingCredential
     | Certifying DCert
 ```
+Everything that we have seen so far uses the Spending TxOutRef purpose. TxOutRef is a refere

@@ -35,7 +35,7 @@ data TxInfo = TxInfo
     -- ^ Hash of the pending transaction (excluding witnesses)
     } deriving (Generic)
 ```
-  * ScriptPurpose
+   * ScriptPurpose
 ```
 -- | Purpose of the script that is currently running
 data ScriptPurpose

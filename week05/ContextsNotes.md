@@ -17,7 +17,7 @@ __ScriptContext__ is defined in [Contexts.hs](https://github.com/input-output-hk
 data ScriptContext = ScriptContext{scriptContextTxInfo :: TxInfo, scriptContextPurpose :: ScriptPurpose }
 ```
 ScriptContext has two fields that are defined
-  * TxInfo
+### TxInfo
 ```
 -- | A pending transaction. This is the view as seen by validator scripts, so some details are stripped out.
 data TxInfo = TxInfo
@@ -38,7 +38,7 @@ data TxInfo = TxInfo
 __TxInfo__ contains all the context info about the transaction that is being validated.
 * The minting policy is activated when the __txInfoForge__ field contains a non-zero number.
 
- * ScriptPurpose
+### ScriptPurpose
 ```
 -- | Purpose of the script that is currently running
 data ScriptPurpose

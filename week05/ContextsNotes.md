@@ -18,7 +18,7 @@ data ScriptContext = ScriptContext{scriptContextTxInfo :: TxInfo, scriptContextP
 ```
 * ScriptContext has two fields that are defined
   * TxInfo
-```
+`
 -- | A pending transaction. This is the view as seen by validator scripts, so some details are stripped out.
 data TxInfo = TxInfo
     { txInfoInputs      :: [TxInInfo] -- ^ Transaction inputs
@@ -34,13 +34,13 @@ data TxInfo = TxInfo
     , txInfoId          :: TxId
     -- ^ Hash of the pending transaction (excluding witnesses)
     } deriving (Generic)
-```
-   * ScriptPurpose
-```
+`
+ * ScriptPurpose
+`
 -- | Purpose of the script that is currently running
 data ScriptPurpose
     = Minting CurrencySymbol
     | Spending TxOutRef
     | Rewarding StakingCredential
     | Certifying DCert
-```
+`

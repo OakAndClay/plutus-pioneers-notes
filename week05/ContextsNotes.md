@@ -1,6 +1,6 @@
 *Validation Rehash
   * If
-    * Dont have a public key address
+    * Don't have a public key address
     * Do have script address
     * Do have a UTXO
     * So have a transaction that tries to consume the UTXO as an imput

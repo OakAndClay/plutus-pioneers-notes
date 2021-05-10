@@ -38,7 +38,7 @@ data TxInfo = TxInfo
 ```
 __TxInfo__ contains all the context info about the transaction that is being validated.
 * The minting policy is activated when the __txInfoForge__ field contains a non-zero number.
- * This value has been zero in everything that we have done so far.
+  * This value has been zero in everything that we have done so far.
 
 ### ScriptPurpose
 ```

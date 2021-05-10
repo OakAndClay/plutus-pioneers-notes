@@ -35,7 +35,8 @@ data TxInfo = TxInfo
     -- ^ Hash of the pending transaction (excluding witnesses)
     } deriving (Generic)
 ```
-TxInfo contains all the context info about the transaction that is being validated.
+__TxInfo__ contains all the context info about the transaction that is being validated.
+* The minting policy is activated when the __txInfoForge__ field contains a non-zero number.
 
  * ScriptPurpose
 ```
@@ -46,4 +47,4 @@ data ScriptPurpose
     | Rewarding StakingCredential
     | Certifying DCert
 ```
-Everything that we have seen so far uses the Spending TxOutRef purpose. TxOutRef is a refere
+Everything that we have seen so far uses the Spending TxOutRef purpose. TxOutRef is a refererence to the UTXO that the transaction is trying to consume.

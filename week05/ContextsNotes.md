@@ -54,5 +54,5 @@ data ScriptPurpose
     | Rewarding StakingCredential
     | Certifying DCert
 ```
-Everything that we have seen so far uses the Spending TxOutRef purpose. TxOutRef is a refererence to the UTXO that the transaction is trying to consume.
-* The purpose when we forge and burn tokens will be Minting.
+Everything that we have seen so far uses the _Spending TxOutRef_ purpose. TxOutRef is a refererence to the UTXO that the transaction is trying to consume.
+* The purpose when we forge and burn tokens will be _Minting CurrencySymbol_.

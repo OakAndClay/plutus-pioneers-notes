@@ -43,6 +43,7 @@ __TxInfo__ contains all the context info about the transaction that is being val
     * For each CurrencySymbol that is contained in this value being forged.
       * Each CurrencySymbol is the hash of a minting policy script
       * Each minting policy script is executed
+        * Minting policy scripts get one input, only the context.
 
 ### ScriptPurpose
 ```
@@ -54,3 +55,4 @@ data ScriptPurpose
     | Certifying DCert
 ```
 Everything that we have seen so far uses the Spending TxOutRef purpose. TxOutRef is a refererence to the UTXO that the transaction is trying to consume.
+* The purpose when we forge and burn tokens will be Minting.

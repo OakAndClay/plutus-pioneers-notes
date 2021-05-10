@@ -39,9 +39,9 @@ data TxInfo = TxInfo
 __TxInfo__ contains all the context info about the transaction that is being validated.
 * The minting policy is activated when the __txInfoForge__ field contains a non-zero number.
   * This value has been zero in everything that we have done so far.
-  * If this is non-zero it can contain a "bag of asset classes". Different currency symbols and token names.
-    * For each currency symbol that is contained in this value being forged.
-      * Each currency symbol is the hash of a minting policy script
+  * If this is non-zero it can contain a "bag of asset classes" possible containing different __CurrencySymbol__(s) and __TokenName__(s).
+    * For each CurrencySymbol that is contained in this value being forged.
+      * Each CurrencySymbol is the hash of a minting policy script
       * Each minting policy script is executed
 
 ### ScriptPurpose

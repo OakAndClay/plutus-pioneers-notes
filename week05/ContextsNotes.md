@@ -16,7 +16,7 @@
 ```
 data ScriptContext = ScriptContext{scriptContextTxInfo :: TxInfo, scriptContextPurpose :: ScriptPurpose }
 ```
-* ScriptContext has two fields that are defined
+ScriptContext has two fields that are defined
   * TxInfo
 ```
 -- | A pending transaction. This is the view as seen by validator scripts, so some details are stripped out.

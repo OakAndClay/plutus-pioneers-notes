@@ -31,6 +31,7 @@ import           Playground.Types       (KnownCurrency (..))
 import           Text.Printf            (printf)
 import           Wallet.Emulator.Wallet
 
+-- We need to add the inlinable for mkPolicy to compile inside the oxford brackets.
 {-# INLINABLE mkPolicy #-}
 -- much like a validator scrypt but it only has ScriptContext as a field and it returns a Bool.
 mkPolicy :: ScriptContext -> Bool
@@ -42,6 +43,9 @@ policy = mkMonetaryPolicyScript $$(PlutusTx.compile [|| Scripts.wrapMonetaryPoli
 
 curSymbol :: CurrencySymbol
 curSymbol = scriptCurrencySymbol policy
+-- We use this to get the CurrencySymbol from the policy.
+-- This completes the on-chain part of the script.
+
 
 data MintParams = MintParams
     { mpTokenName :: !TokenName
@@ -51,16 +55,38 @@ data MintParams = MintParams
 type FreeSchema =
     BlockchainActions
         .\/ Endpoint "mint" MintParams
+-- one of the parameters of the contract monad is the Schema
+-- It defines the available actions that we can take
+-- .\/ defines the endpoint.
+-- if we use this schema as a parameter for our contract we will be able to use the mint endopoint.
 
+
+-- 26:10
 mint :: MintParams -> Contract w FreeSchema Text ()
+-- Contract takes 4 type parameters
+-- First one is the type of status that we tell
 mint mp = do
     let val     = Value.singleton curSymbol (mpTokenName mp) (mpAmount mp)
+    -- this identifies the value we want to forge
         lookups = Constraints.monetaryPolicy policy
+        --
         tx      = Constraints.mustForgeValue val
+        -- construct and submit transactions
+        -- we define constrains to define the required parameters of the transaction.
+        -- these conditions all start with 'must'
     ledgerTx <- submitTxConstraintsWith @Void lookups tx
+    -- this is where the actual transaction takes place
+    -- looks for one or more UTXOs to cover the transaction and applies it to the transaction
+    -- submitTxConstraintsWith can fail if there are insuffiecient funds, etc.
+    -- when submitTxConstraintsWith sees the mustForgeValue constraint it knows that it needs to forge/burn so it looks for the policy minting script.
+    -- submitTxConstraintsWith finds the policy minting script through lookups.
+    -- there are different versions of submitTxConstraintsWith that don't need an input
     void $ awaitTxConfirmed $ txId ledgerTx
+    -- this confirms the transaction
+    -- if submitTxConstraintsWith fails it will never make it to this line. It would return a nothing.
     Contract.logInfo @String $ printf "forged %s" (show val)
 
+-- endpoints is the name of the contract that the playground will run.
 endpoints :: Contract () FreeSchema Text ()
 endpoints = mint' >> endpoints
   where

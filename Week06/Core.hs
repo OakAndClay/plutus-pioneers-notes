@@ -44,34 +44,35 @@ import           Plutus.Contracts.Currency as Currency
 import           Prelude                   (Semigroup (..))
 import qualified Prelude                   as Prelude
 
+-- Paramaterized contract
 data Oracle = Oracle
-    { oSymbol   :: !CurrencySymbol
-    , oOperator :: !PubKeyHash
-    , oFee      :: !Integer
-    , oAsset    :: !AssetClass
-    } deriving (Show, Generic, FromJSON, ToJSON, Prelude.Eq, Prelude.Ord)
+    { oSymbol   :: !CurrencySymbol -- NFT currency symbol. The token name is just an empty string
+    , oOperator :: !PubKeyHash     -- The opperator that can make updates
+    , oFee      :: !Integer        -- Fees in lovlace that are due each time it is used
+    , oAsset    :: !AssetClass     -- This is the asset class of the other asset ADA/USDT
+    } deriving (Show, Generic, FromJSON, ToJSON, Prelude.Eq, Prelude.Ord) -- These are boiler plate type classes to make the type liftable
 
 PlutusTx.makeLift ''Oracle
 
-data OracleRedeemer = Update | Use
+data OracleRedeemer = Update | Use -- Supporting two operations
     deriving Show
 
-PlutusTx.unstableMakeIsData ''OracleRedeemer
+PlutusTx.unstableMakeIsData ''OracleRedeemer -- Use template haskell to implement IsData
 
-{-# INLINABLE oracleTokenName #-}
+{-# INLINABLE oracleTokenName #-} -- Need this to use the TokenName as an empty string for the NFT
 oracleTokenName :: TokenName
 oracleTokenName = TokenName emptyByteString
 
-{-# INLINABLE oracleAsset #-}
+{-# INLINABLE oracleAsset #-} -- This defines the NFT AssetClass for the Oracle. It takes in the oSymbol field from Oracle.
 oracleAsset :: Oracle -> AssetClass
 oracleAsset oracle = AssetClass (oSymbol oracle, oracleTokenName)
 
 {-# INLINABLE oracleValue #-}
 oracleValue :: TxOut -> (DatumHash -> Maybe Datum) -> Maybe Integer
-oracleValue o f = do
-    dh      <- txOutDatum o
-    Datum d <- f dh
-    PlutusTx.fromData d
+oracleValue o f = do        -- do monadic notation makes this nice and clean
+    dh      <- txOutDatum o -- o is a TxOut that will return nothing if it doesnt have a Datum otherwise it will produce a datum hash dh
+    Datum d <- f dh         -- f is a provided funcion that maybe turn the datum hash to a Datum (type wrapper around data)
+    PlutusTx.fromData d     -- PlutusTx will Maybe turn the Datum into an integer.
 
 {-# INLINABLE mkOracleValidator #-}
 mkOracleValidator :: Oracle -> Integer -> OracleRedeemer -> ScriptContext -> Bool

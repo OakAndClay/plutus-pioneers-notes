@@ -1,5 +1,5 @@
-### Case Study
-## Fully Fledged Dapp
+## Case Study
+### Fully Fledged Dapp
 * Running on a moch chain
 * Oracles
   * A way to use real world info for smart contracts running on the blockchain.

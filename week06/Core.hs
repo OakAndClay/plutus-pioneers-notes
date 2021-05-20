@@ -80,32 +80,33 @@ mkOracleValidator oracle x r ctx =
     traceIfFalse "token missing from input"  inputHasToken  &&
     traceIfFalse "token missing from output" outputHasToken &&
     case r of
-        Update -> traceIfFalse "operator signature missing" (txSignedBy info $ oOperator oracle) &&
-                  traceIfFalse "invalid output datum"       validOutputDatum
-        Use    -> traceIfFalse "oracle value changed"       (outputDatum == Just x)              &&
-                  traceIfFalse "fees not paid"              feesPaid
+        Update -> traceIfFalse "operator signature missing" (txSignedBy info $ oOperator oracle) && -- has the opperator signed the transaction
+                  traceIfFalse "invalid output datum"       validOutputDatum                        -- Does it cary valid data
+        Use    -> traceIfFalse "oracle value changed"       (outputDatum == Just x)              && -- Chacks that the value of the oracle hasn't changed
+                  traceIfFalse "fees not paid"              feesPaid                                -- Have the fees been paid?
   where
     info :: TxInfo
     info = scriptContextTxInfo ctx
 
-    ownInput :: TxOut
+    ownInput :: TxOut -- The oracle output
     ownInput = case findOwnInput ctx of
         Nothing -> traceError "oracle input missing"
-        Just i  -> txInInfoResolved i
+        Just i  -> txInInfoResolved i -- i is of type txinput
 
     inputHasToken :: Bool
-    inputHasToken = assetClassValueOf (txOutValue ownInput) (oracleAsset oracle) == 1
+    inputHasToken = assetClassValueOf (txOutValue ownInput) (oracleAsset oracle) == 1 -- assetClassValueOf is in ledger.module
+    -- takes an asset class and value and returns an integer. how many coins are included in that value. Checking if the NFT is there.
 
-    ownOutput :: TxOut
-    ownOutput = case getContinuingOutputs ctx of
+    ownOutput :: TxOut -- 
+    ownOutput = case getContinuingOutputs ctx of -- getContinuingOutputs returns a list of all the outputs that go to the scirpt address that is being validated.
         [o] -> o
         _   -> traceError "expected exactly one oracle output"
 
     outputHasToken :: Bool
-    outputHasToken = assetClassValueOf (txOutValue ownOutput) (oracleAsset oracle) == 1
+    outputHasToken = assetClassValueOf (txOutValue ownOutput) (oracleAsset oracle) == 1 -- checking to see if the oracle output contains the NFT
 
     outputDatum :: Maybe Integer
-    outputDatum = oracleValue ownOutput (`findDatum` info)
+    outputDatum = oracleValue ownOutput (`findDatum` info) -- takes info and datum hash and tries to look up the corrisponding datum
 
     validOutputDatum :: Bool
     validOutputDatum = isJust outputDatum
@@ -116,7 +117,9 @@ mkOracleValidator oracle x r ctx =
         inVal  = txOutValue ownInput
         outVal = txOutValue ownOutput
       in
-        outVal `geq` (inVal <> Ada.lovelaceValueOf (oFee oracle))
+        outVal `geq` (inVal <> Ada.lovelaceValueOf (oFee oracle)) -- output should be equal to the input value plus the fees. `geq` is greater than or equal to.
+
+-- The above is the core buisiness logic of the oracle
 
 data Oracling
 instance Scripts.ScriptType Oracling where
@@ -135,6 +138,8 @@ oracleValidator = Scripts.validatorScript . oracleInst
 
 oracleAddress :: Oracle -> Ledger.Address
 oracleAddress = scriptAddress . oracleValidator
+
+-- The below is the off-chain code
 
 data OracleParams = OracleParams
     { opFees   :: !Integer

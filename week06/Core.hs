@@ -143,14 +143,14 @@ oracleAddress = scriptAddress . oracleValidator
 
 data OracleParams = OracleParams
     { opFees   :: !Integer
-    , opSymbol :: !CurrencySymbol
+    , opSymbol :: !CurrencySymbol -- This is the information of the asset we want to track. Not the NFT.
     , opToken  :: !TokenName
     } deriving (Show, Generic, FromJSON, ToJSON)
 
-startOracle :: forall w s. HasBlockchainActions s => OracleParams -> Contract w s Text Oracle
-startOracle op = do
+startOracle :: forall w s. HasBlockchainActions s => OracleParams -> Contract w s Text Oracle -- The only thing we are doing in this function is minting the NFT.
+startOracle op = do -- The minting can take a couple slots so keeping it separate from the oracle data will allow the date to be more accurate.
     pkh <- pubKeyHash <$> Contract.ownPubKey
-    osc <- mapError (pack . show) (forgeContract pkh [(oracleTokenName, 1)] :: Contract w s CurrencyError OneShotCurrency)
+    osc <- mapError (pack . show) (forgeContract pkh [(oracleTokenName, 1)] :: Contract w s CurrencyError OneShotCurrency) -- forgeContract allows us to mint NFTs
     let cs     = Currency.currencySymbol osc
         oracle = Oracle
             { oSymbol   = cs

@@ -11,7 +11,7 @@
   * We need to distinguish between the true utxo oracle output and the infinite possible noise.
   * We can asign an NFT to an oracle address to insure the authenticity of an oracle. 
 
-***
+```
 -- | A transaction output, consisting of a target address, a value, and optionally a datum hash.
 data TxOut = TxOut {
     txOutAddress   :: Address,
@@ -20,4 +20,4 @@ data TxOut = TxOut {
     }
     deriving stock (Show, Eq, Generic)
     deriving anyclass (Serialise, ToJSON, FromJSON, NFData)
-***
+```

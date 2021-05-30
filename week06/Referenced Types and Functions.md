@@ -1,6 +1,6 @@
 
 #### Defined in [Plutus.V1.Ledger](https://github.com/input-output-hk/plutus/blob/master/plutus-ledger-api/src/Plutus/V1/Ledger/Tx.hs)
-* **TxOut
+* **TxOut**
     *  A transaction output, consisting of a target address, a value, and optionally a datum hash.
 ```
 data TxOut = TxOut {
@@ -14,7 +14,7 @@ data TxOut = TxOut {
 
 
 #### Defined in [Plutus.V1.Value.hs](https://github.com/input-output-hk/plutus/blob/master/plutus-ledger-api/src/Plutus/V1/Ledger/Value.hs)
-* **TokenName
+* **TokenName**
     * ByteString of a name of a token, shown as UTF-8 string when possible
 ```
 newtype TokenName = TokenName { unTokenName :: Builtins.ByteString }
@@ -24,7 +24,7 @@ newtype TokenName = TokenName { unTokenName :: Builtins.ByteString }
     deriving anyclass (Hashable, NFData)
     deriving Pretty via (PrettyShow TokenName)
 ```
-* **AssetClass
+* **AssetClass**
    * An asset class, identified by currency symbol and token name.
 ```
 newtype AssetClass = AssetClass { unAssetClass :: (CurrencySymbol, TokenName) }

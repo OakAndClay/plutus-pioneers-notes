@@ -19,14 +19,5 @@ There are *two* possible states coming from this position. **Player 2** (Bob) ca
 
 The **support** for for **state machines** can be found at [plutus-contract/src/Plutus/Contract/StateMachine/OnChain.hs](https://github.com/input-output-hk/plutus/blob/1b6dedf0b9eca7df02bf34d71de94af7549ddc80/plutus-contract/src/Plutus/Contract/StateMachine/OnChain.hs)
 
-```
-data StateMachine s i = StateMachine {
-      smTransition  :: State s -> i -> Maybe (TxConstraints Void Void, State s),
-      smFinal       :: s -> Bool,
-      smCheck       :: s -> i -> ScriptContext -> Bool,
-      smThreadToken :: Maybe AssetClass
-    }
-```
 ![State2](/week07/images/State2.png)
 
-This 

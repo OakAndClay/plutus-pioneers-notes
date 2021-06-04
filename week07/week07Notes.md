@@ -22,5 +22,5 @@ The **support** for for **state machines** can be found at [plutus-contract/src/
 ![State2](/week07/images/State2.png)
 
 ```
-data StateMachine s i = StateMachine {smTransition  :: State s -> i -> Maybe (TxConstraints Void Void, State s),
+data StateMachine s i = StateMachine {smTransition  :: State s -> i -> Maybe (TxConstraints Void Void, State s)
 ```

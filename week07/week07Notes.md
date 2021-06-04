@@ -25,6 +25,7 @@ The **support** for for **state machines** can be found at [plutus-contract/src/
 data StateMachine s i = StateMachine {smTransition  :: State s -> i -> Maybe (TxConstraints Void Void, State s)
 ```
 s = state = datum type `State s`
+
 i = input = redeemer type
 
 ```

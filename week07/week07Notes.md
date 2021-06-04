@@ -18,3 +18,5 @@ There are *two* possible states coming from this position. **Player 2** (Bob) ca
   * This transitions produces a **new UTXO** at the *same script address* with a **new Datum** that defines the current state.
 
 The **support** for for **state machines** can be found at [plutus-contract/src/Plutus/Contract/StateMachine/OnChain.hs](https://github.com/input-output-hk/plutus/blob/1b6dedf0b9eca7df02bf34d71de94af7549ddc80/plutus-contract/src/Plutus/Contract/StateMachine/OnChain.hs)
+
+

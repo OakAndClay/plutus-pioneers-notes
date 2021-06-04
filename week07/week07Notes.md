@@ -24,3 +24,13 @@ The **support** for for **state machines** can be found at [plutus-contract/src/
 ```
 data StateMachine s i = StateMachine {smTransition  :: State s -> i -> Maybe (TxConstraints Void Void, State s)
 ```
+s = state = datum type `State s`
+i = input = redeemer type
+
+```
+data State s = State { stateData :: s, stateValue :: Value }
+```
+`stateData` is the state itsealf and `stateValue` is the value
+
+A state machine is a record type with 4 fields. The most important being the transition.
+

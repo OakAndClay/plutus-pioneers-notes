@@ -4,7 +4,7 @@ A **state machine** is a system that allows you to transition from one state to 
 
 ![State1](/week07/images/State1.png)
 
-**The first state** in this example is where the first player has made a move. The state is characterized by a datum hash.
+**The first state** in this example is where the first player has made a move. **The state is characterized by a datum hash**.
 
 There are *two* possible states coming from this position. **Player 2** (Bob) can choose to **play**, *otherwise* **Player 1** (Alice) can **reclaim**. 
 

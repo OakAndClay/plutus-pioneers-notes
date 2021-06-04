@@ -27,3 +27,4 @@ data StateMachine s i = StateMachine {
       smThreadToken :: Maybe AssetClass
     }
 ```
+![State2](/week07/images/State2.png)

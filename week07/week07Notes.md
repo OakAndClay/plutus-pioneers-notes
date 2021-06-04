@@ -1,2 +1,2 @@
 ### State Machine
-![State1](/images/State1.png)
+![State1](/week07/images/State1.png)

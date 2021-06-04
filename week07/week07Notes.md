@@ -28,3 +28,5 @@ data StateMachine s i = StateMachine {
     }
 ```
 ![State2](/week07/images/State2.png)
+
+This 

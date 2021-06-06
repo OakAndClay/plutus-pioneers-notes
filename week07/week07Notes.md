@@ -19,7 +19,6 @@ There are *two* possible states coming from this position. **Player 2** (Bob) ca
 
 The **support** for for **state machines** can be found at [plutus-contract/src/Plutus/Contract/StateMachine/OnChain.hs](https://github.com/input-output-hk/plutus/blob/1b6dedf0b9eca7df02bf34d71de94af7549ddc80/plutus-contract/src/Plutus/Contract/StateMachine/OnChain.hs)
 
-![State2](/week07/images/State2.png)
 ```
 data StateMachine s i = StateMachine 
       {
@@ -29,16 +28,18 @@ data StateMachine s i = StateMachine
       smThreadToken :: Maybe AssetClass
       }
 ```
-A state machine is a record type with 4 fields. The most important being the `smTransition`.
+`StateMachine` takes two imputs `s i`
 
-s = state = datum type `State s`
+`s` = state = datum type `State s`
 ```
 data State s = State { stateData :: s, stateValue :: Value }
 ```
 `stateData` is the state type datum and `stateValue` is the value of the UTXO
 
-i = input = redeemer type
+`i` = input = redeemer type
  * It is the transaction that tries to consume the UTXO
+
+`StateMachine` is a record type with 4 fields `smTransition` `smFinal` `smCheck` `smThrreadtoken`. The most important being the `smTransition`.
 
 `Maybe` allows us to return nothing. Incicating that this function has the possibility of failing. If it succeeeds, it will return a tuple `(TxConstraints Void Void, State s)`. The second part of the tuple is the new UTXO in the form of `State s`, Includeing the new datum and value of the UTXO.
 

@@ -21,7 +21,7 @@ The **support** for for **state machines** can be found at [plutus-contract/src/
 
 ![State2](/week07/images/State2.png)
 
-A state machine is a record type with 4 fields. The most important being the transition.
+A state machine is a record type with 4 fields. The most important being the `smTransition`.
 ```
 data StateMachine s i = StateMachine {smTransition  :: State s -> i -> Maybe (TxConstraints Void Void, State s)
 ```

@@ -38,7 +38,7 @@ data StateMachine s i = StateMachine
 * `State s` is a UTXO. It is defined as `data State s = State { stateData :: s, stateValue :: Value }`
   * `stateData` = datum of the UTXO
   * `stateValue` = value of the UTXO
-* `Maybe` allows us to return nothing. Incicating that this function has the possibility of failing. If it succeeeds, it will return a tuple. 
+* `Maybe` allows us to return nothing. Indicating that this function has the possibility of failing. If it succeeeds, it will return a tuple. 
   * `(TxConstraints Void Void, State s)`.
     * `State s`, Includeing the new datum and value of the UTXO.
     * `TxContraints` specifies additional constraints the transition `i` that produces this new UTXO must satisfy.

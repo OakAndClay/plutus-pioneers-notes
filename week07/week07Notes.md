@@ -20,11 +20,17 @@ There are *two* possible states coming from this position. **Player 2** (Bob) ca
 The **support** for for **state machines** can be found at [plutus-contract/src/Plutus/Contract/StateMachine/OnChain.hs](https://github.com/input-output-hk/plutus/blob/1b6dedf0b9eca7df02bf34d71de94af7549ddc80/plutus-contract/src/Plutus/Contract/StateMachine/OnChain.hs)
 
 ![State2](/week07/images/State2.png)
-
+```
+data StateMachine s i = StateMachine 
+      {
+      smTransition  :: State s -> i -> Maybe (TxConstraints Void Void, State s),
+      smFinal       :: s -> Bool,
+      smCheck       :: s -> i -> ScriptContext -> Bool,
+      smThreadToken :: Maybe AssetClass
+      }
+```
 A state machine is a record type with 4 fields. The most important being the `smTransition`.
-```
-data StateMachine s i = StateMachine {smTransition  :: State s -> i -> Maybe (TxConstraints Void Void, State s)
-```
+
 s = state = datum type `State s`
 ```
 data State s = State { stateData :: s, stateValue :: Value }

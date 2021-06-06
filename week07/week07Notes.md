@@ -36,9 +36,9 @@ data StateMachine s i = StateMachine
 
 `smTransition  :: State s -> i -> Maybe (TxConstraints Void Void, State s)`
 * `data State s = State { stateData :: s, stateValue :: Value }`
- * `stateData` is the state type datum and 
- * `stateValue` is the value of the UTXO
+  * `stateData` is the state type datum and 
+  * `stateValue` is the value of the UTXO
 * `Maybe` allows us to return nothing. Incicating that this function has the possibility of failing. If it succeeeds, it will return a tuple 
-* `(TxConstraints Void Void, State s)`.
- * `State s`, Includeing the new datum and value of the UTXO.
- * `TxContraints` specifies additional constraints that the transition that produces this new UTXO must satisfy.
+  * `(TxConstraints Void Void, State s)`.
+    * `State s`, Includeing the new datum and value of the UTXO.
+    * `TxContraints` specifies additional constraints that the transition that produces this new UTXO must satisfy.

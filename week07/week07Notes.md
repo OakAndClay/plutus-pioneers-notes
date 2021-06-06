@@ -35,10 +35,10 @@ data StateMachine s i = StateMachine
 `StateMachine` is a record type with 4 fields `smTransition` `smFinal` `smCheck` `smThrreadtoken`. The most important being the `smTransition`.
 
 `smTransition  :: State s -> i -> Maybe (TxConstraints Void Void, State s)`
-* `data State s = State { stateData :: s, stateValue :: Value }`
-  * `stateData` is the state type datum
-  * `stateValue` is the value of the UTXO
+* `State s` is a UTXO. It is defined as `data State s = State { stateData :: s, stateValue :: Value }`
+  * `stateData` = datum of the UTXO
+  * `stateValue` = value of the UTXO
 * `Maybe` allows us to return nothing. Incicating that this function has the possibility of failing. If it succeeeds, it will return a tuple. 
   * `(TxConstraints Void Void, State s)`.
     * `State s`, Includeing the new datum and value of the UTXO.
-    * `TxContraints` specifies additional constraints that the transition that produces this new UTXO must satisfy.
+    * `TxContraints` specifies additional constraints that the transition 'i' that produces this new UTXO must satisfy.

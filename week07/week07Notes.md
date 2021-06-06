@@ -30,14 +30,13 @@ data StateMachine s i = StateMachine
 ```
 `StateMachine` takes two imputs `s i`
 
-`s` = state = datum type `State s`
+`s` = state = datum type `State s`. It is the UTXO.
 ```
 data State s = State { stateData :: s, stateValue :: Value }
 ```
 `stateData` is the state type datum and `stateValue` is the value of the UTXO
 
-`i` = input = redeemer type
- * It is the transaction that tries to consume the UTXO
+`i` = input = redeemer type. It is the transaction that tries to consume the UTXO `s`
 
 `StateMachine` is a record type with 4 fields `smTransition` `smFinal` `smCheck` `smThrreadtoken`. The most important being the `smTransition`.
 

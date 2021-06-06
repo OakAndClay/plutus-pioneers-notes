@@ -34,5 +34,5 @@ data State s = State { stateData :: s, stateValue :: Value }
 i = input = redeemer type
  * It is the transaction that tries to consume the UTXO
 
-`Maybe` alows us to return nothing. Incicating that this function has the possibility of not being allowed.
+`Maybe` alows us to return nothing. Incicating that this function has the possibility of not being allowed. If it is allowed, it will return a tuple. The second part of the tuple is the new UTXO in the form of `State s`, Includeing the new state and value of the UTXO.
 

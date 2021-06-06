@@ -41,4 +41,4 @@ data StateMachine s i = StateMachine
 * `Maybe` allows us to return nothing. Incicating that this function has the possibility of failing. If it succeeeds, it will return a tuple. 
   * `(TxConstraints Void Void, State s)`.
     * `State s`, Includeing the new datum and value of the UTXO.
-    * `TxContraints` specifies additional constraints that the transition `i` that produces this new UTXO must satisfy.
+    * `TxContraints` specifies additional constraints on the transition `i` that produces this new UTXO must satisfy.

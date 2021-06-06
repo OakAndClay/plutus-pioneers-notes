@@ -47,5 +47,5 @@ data StateMachine s i = StateMachine
 
 `smCheck :: s -> i -> ScriptContext -> Bool` It recieves the datum, redeemer and context and returns a Bool.
 
-`smThreadToken :: Maybe AssetClass` Identifies the currect UTXO that is sitting at the address of the StateMachine. The AssetClass would be an NFT used as a unique identity for the UTXO
+`smThreadToken :: Maybe AssetClass` Identifies the currect UTXO that is sitting at the address of the StateMachine. `AssetClass` would be an NFT used as a unique identifier for the UTXO.
 

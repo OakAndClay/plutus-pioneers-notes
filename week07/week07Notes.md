@@ -34,5 +34,6 @@ data State s = State { stateData :: s, stateValue :: Value }
 i = input = redeemer type
  * It is the transaction that tries to consume the UTXO
 
-`Maybe` allows us to return nothing. Incicating that this function has the possibility of failing. If it succeeeds, it will return a tuple `(TxConstraints Void Void, State s)`. The second part of the tuple is the new UTXO in the form of `State s`, Includeing the new state and value of the UTXO.
+`Maybe` allows us to return nothing. Incicating that this function has the possibility of failing. If it succeeeds, it will return a tuple `(TxConstraints Void Void, State s)`. The second part of the tuple is the new UTXO in the form of `State s`, Includeing the new datum and value of the UTXO.
 
+`TxContraints` specifies additional constraints that the transition that produces this new UTXO must satisfy.

@@ -42,3 +42,10 @@ data StateMachine s i = StateMachine
   * `(TxConstraints Void Void, State s)`.
     * `State s`, Includeing the new datum and value of the UTXO.
     * `TxContraints` specifies additional constraints the transition `i` that produces this new UTXO must satisfy.
+
+`smFinal :: s -> Bool` Identifies final states. There is no value attached with a final state and it does not produce a new UTXO
+
+`smCheck :: s -> i -> ScriptContext -> Bool` It recieves the datum, redeemer and context and returns a Bool.
+
+`smThreadToken :: Maybe AssetClass` Identifies the currect UTXO that is sitting at the address of the StateMachine. The AssetClass would be an NFT used as a unique identity for the UTXO
+

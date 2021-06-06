@@ -29,17 +29,14 @@ data StateMachine s i = StateMachine
       }
 ```
 `StateMachine` takes two imputs `s i`
+`s` = state = datum type
+`i` = input = redeemer type. It is the transaction that tries to consume the UTXO `s`
 
-`s` = state = datum type `State s`. It is the UTXO.
+`StateMachine` is a record type with 4 fields `smTransition` `smFinal` `smCheck` `smThrreadtoken`. The most important being the `smTransition`.
 ```
 data State s = State { stateData :: s, stateValue :: Value }
 ```
 `stateData` is the state type datum and `stateValue` is the value of the UTXO
-
-`i` = input = redeemer type. It is the transaction that tries to consume the UTXO `s`
-
-`StateMachine` is a record type with 4 fields `smTransition` `smFinal` `smCheck` `smThrreadtoken`. The most important being the `smTransition`.
-
 `Maybe` allows us to return nothing. Incicating that this function has the possibility of failing. If it succeeeds, it will return a tuple `(TxConstraints Void Void, State s)`. The second part of the tuple is the new UTXO in the form of `State s`, Includeing the new datum and value of the UTXO.
 
 `TxContraints` specifies additional constraints that the transition that produces this new UTXO must satisfy.

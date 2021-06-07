@@ -54,12 +54,6 @@ data StateMachine s i = StateMachine
 We are going to take a look at a version of the [EvenOdd.hs](https://github.com/input-output-hk/plutus-pioneer-program/blob/main/code/week07/src/Week07/EvenOdd.hs) game written using StateMachine. It is called [StateMachine.hs](https://github.com/input-output-hk/plutus-pioneer-program/blob/main/code/week07/src/Week07/StateMachine.hs).
 
 Let's take a look at some of the functions for StateMachine.hs
-
-* `GameDatum` 
-  * includes a second constructor called `Finished` to represent the final state of the state machine. 
-    * It will not include a UTXO. 
-    * We need it for the state machine to work.
-  * The deffinition of equality for `GameDatum` needs to include the `Finished` constructor.
 ```
 data GameDatum = GameDatum ByteString (Maybe GameChoice) | Finished
     deriving Show
@@ -70,4 +64,41 @@ instance Eq GameDatum where
     Finished        == Finished          = True
     _               == _                 = False    
 ```
-* `transition :: Game -> State GameDatum -> GameRedeemer -> Maybe (TxConstraints Void Void, State GameDatum)`
+* `GameDatum` 
+  * includes a second constructor called `Finished` to represent the final state of the state machine. 
+    * It will not include a UTXO. 
+    * We need it for the state machine to work.
+  * The definition of equality for `GameDatum` needs to include the `Finished` constructor.
+```
+{-# INLINABLE transition #-}
+transition :: Game -> State GameDatum -> GameRedeemer -> Maybe (TxConstraints Void Void, State GameDatum)
+transition game s r = case (stateValue s, stateData s, r) of
+    (v, GameDatum bs Nothing, Play c)
+        | lovelaces v == gStake game         -> Just ( Constraints.mustBeSignedBy (gSecond game)                    <>
+                                                       Constraints.mustValidateIn (to $ gPlayDeadline game)
+                                                     , State (GameDatum bs $ Just c) (lovelaceValueOf $ 2 * gStake game)
+                                                     )
+    (v, GameDatum _ (Just _), Reveal _)
+        | lovelaces v == (2 * gStake game)   -> Just ( Constraints.mustBeSignedBy (gFirst game)                     <>
+                                                       Constraints.mustValidateIn (to $ gRevealDeadline game)       <>
+                                                       Constraints.mustPayToPubKey (gFirst game) token
+                                                     , State Finished mempty
+                                                     )
+    (v, GameDatum _ Nothing, ClaimFirst)
+        | lovelaces v == gStake game         -> Just ( Constraints.mustBeSignedBy (gFirst game)                     <>
+                                                       Constraints.mustValidateIn (from $ 1 + gPlayDeadline game)   <>
+                                                       Constraints.mustPayToPubKey (gFirst game) token
+                                                     , State Finished mempty
+                                                     )
+    (v, GameDatum _ (Just _), ClaimSecond)
+        | lovelaces v == (2 * gStake game)   -> Just ( Constraints.mustBeSignedBy (gSecond game)                    <>
+                                                       Constraints.mustValidateIn (from $ 1 + gRevealDeadline game) <>
+                                                       Constraints.mustPayToPubKey (gFirst game) token
+                                                     , State Finished mempty
+                                                     )
+    _                                        -> Nothing
+  where
+    token :: Value
+    token = assetClassValue (gToken game) 1
+```
+* `transition`

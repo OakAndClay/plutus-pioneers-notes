@@ -56,7 +56,7 @@ We are going to take a look at a version of the [EvenOdd.hs](https://github.com/
 Let's take a look at some of the functions for StateMachine.hs
 
 * `GameDatum` 
-  * includes a second constructor called finished to represent the final state of the state machine. 
+  * includes a second constructor called `Finished` to represent the final state of the state machine. 
     * It will not include a UTXO. 
     * We need it for the state machine to work.
   * The deffinition of equality for `GameDatum` needs to include the `Finished` constructor.

@@ -54,6 +54,11 @@ data StateMachine s i = StateMachine
 We are going to take a look at a version of the [EvenOdd.hs](https://github.com/input-output-hk/plutus-pioneer-program/blob/main/code/week07/src/Week07/EvenOdd.hs) game written using StateMachine. It is called [StateMachine.hs](https://github.com/input-output-hk/plutus-pioneer-program/blob/main/code/week07/src/Week07/StateMachine.hs).
 
 Let's take a look at some of the functions for StateMachine.hs
+`GameDatum`
+* includes a second constructor called `Finished` to represent the final state of the state machine. 
+  * It will not include a UTXO. 
+  * We need it for the state machine to work.
+* The definition of equality for `GameDatum` needs to include the `Finished` constructor.
 ```
 data GameDatum = GameDatum ByteString (Maybe GameChoice) | Finished
     deriving Show
@@ -64,11 +69,7 @@ instance Eq GameDatum where
     Finished        == Finished          = True
     _               == _                 = False    
 ```
-`GameDatum`
-* includes a second constructor called `Finished` to represent the final state of the state machine. 
-  * It will not include a UTXO. 
-  * We need it for the state machine to work.
-* The definition of equality for `GameDatum` needs to include the `Finished` constructor.
+
 ```
 {-# INLINABLE transition #-}
 transition :: Game -> State GameDatum -> GameRedeemer -> Maybe (TxConstraints Void Void, State GameDatum)

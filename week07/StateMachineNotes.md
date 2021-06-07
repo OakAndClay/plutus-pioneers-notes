@@ -70,3 +70,4 @@ instance Eq GameDatum where
     Finished        == Finished          = True
     _               == _                 = False    
 ```
+* `transition :: Game -> State GameDatum -> GameRedeemer -> Maybe (TxConstraints Void Void, State GameDatum)`

@@ -49,6 +49,7 @@ data StateMachine s i = StateMachine
 
 `smThreadToken :: Maybe AssetClass` Identifies the currect UTXO that is sitting at the address of the StateMachine. `AssetClass` would be an NFT used as a unique identifier for the UTXO.
 
-#### Example Code
-##### We are going to take a look at a version of the [EvenOdd.hs](https://github.com/input-output-hk/plutus-pioneer-program/blob/main/code/week07/src/Week07/EvenOdd.hs) game written using StateMachine. It can be found [here](https://github.com/input-output-hk/plutus-pioneer-program/blob/main/code/week07/src/Week07/StateMachine.hs).
+
+### Example Code
+We are going to take a look at a version of the [EvenOdd.hs](https://github.com/input-output-hk/plutus-pioneer-program/blob/main/code/week07/src/Week07/EvenOdd.hs) game written using StateMachine. It can be found [here](https://github.com/input-output-hk/plutus-pioneer-program/blob/main/code/week07/src/Week07/StateMachine.hs).
 

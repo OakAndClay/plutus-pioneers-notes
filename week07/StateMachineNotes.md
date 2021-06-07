@@ -64,11 +64,11 @@ instance Eq GameDatum where
     Finished        == Finished          = True
     _               == _                 = False    
 ```
-* `GameDatum` 
-  * includes a second constructor called `Finished` to represent the final state of the state machine. 
-    * It will not include a UTXO. 
-    * We need it for the state machine to work.
-  * The definition of equality for `GameDatum` needs to include the `Finished` constructor.
+`GameDatum`
+* includes a second constructor called `Finished` to represent the final state of the state machine. 
+  * It will not include a UTXO. 
+  * We need it for the state machine to work.
+* The definition of equality for `GameDatum` needs to include the `Finished` constructor.
 ```
 {-# INLINABLE transition #-}
 transition :: Game -> State GameDatum -> GameRedeemer -> Maybe (TxConstraints Void Void, State GameDatum)

@@ -51,11 +51,11 @@ data StateMachine s i = StateMachine
 
 
 ### Example Code
-We are going to take a look at a version of the [EvenOdd.hs](https://github.com/input-output-hk/plutus-pioneer-program/blob/main/code/week07/src/Week07/EvenOdd.hs) game written using StateMachine. It can be found [here](https://github.com/input-output-hk/plutus-pioneer-program/blob/main/code/week07/src/Week07/StateMachine.hs).
+We are going to take a look at a version of the [EvenOdd.hs](https://github.com/input-output-hk/plutus-pioneer-program/blob/main/code/week07/src/Week07/EvenOdd.hs) game written using StateMachine. It is called [StateMachine.hs](https://github.com/input-output-hk/plutus-pioneer-program/blob/main/code/week07/src/Week07/StateMachine.hs).
 
 We will be hilighting the differences between the code.
 
-`GameDatum` includes a second constructor called finished to represent the final state of the state machine we need it for the state machine to work.
+* `GameDatum` includes a second constructor called finished to represent the final state of the state machine we need it for the state machine to work.
 
 EvenOdd.hs
 ```

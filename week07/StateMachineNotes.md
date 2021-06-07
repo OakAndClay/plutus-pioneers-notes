@@ -54,6 +54,7 @@ data StateMachine s i = StateMachine
 We are going to take a look at a version of the [EvenOdd.hs](https://github.com/input-output-hk/plutus-pioneer-program/blob/main/code/week07/src/Week07/EvenOdd.hs) game written using StateMachine. It is called [StateMachine.hs](https://github.com/input-output-hk/plutus-pioneer-program/blob/main/code/week07/src/Week07/StateMachine.hs).
 
 Let's take a look at some of the functions for StateMachine.hs
+
 `GameDatum`
 * includes a second constructor called `Finished` to represent the final state of the state machine. 
   * It will not include a UTXO. 
@@ -70,6 +71,7 @@ instance Eq GameDatum where
     _               == _                 = False    
 ```
 
+`transition`
 ```
 {-# INLINABLE transition #-}
 transition :: Game -> State GameDatum -> GameRedeemer -> Maybe (TxConstraints Void Void, State GameDatum)
@@ -102,4 +104,4 @@ transition game s r = case (stateValue s, stateData s, r) of
     token :: Value
     token = assetClassValue (gToken game) 1
 ```
-* `transition`
+

@@ -53,6 +53,8 @@ git fetch && git rebase
 git pull
 ```
 
+Check the current commit hash within a repo by running the command `git log -n1 --format=format:"%H"`
+
 ### Personal Preferences
 
 I like to use VSCode. https://code.visualstudio.com/Download
@@ -60,6 +62,7 @@ I like to use VSCode. https://code.visualstudio.com/Download
 I have installed two Haskell extensions.
 
 https://marketplace.visualstudio.com/items?itemName=haskell.haskell
+
 
 https://marketplace.visualstudio.com/items?itemName=justusadam.language-haskell
 

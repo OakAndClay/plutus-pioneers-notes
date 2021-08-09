@@ -5,7 +5,7 @@
 * You can build it with command: `nix-build -A plutus.plutus-haddock-combined -o result/haddock`  
 * The documentation will be at `<dir plutus-repo>/result/haddock/share/doc/index.html`
 
-After building nix inside the plutus repo we can launch nix-shell within that directory. Open a terminal.
+##### After building nix inside the plutus repo we can launch nix-shell within that directory. Open a terminal.
 
 ` cd ~/plutus && sudo nix-shell `
 

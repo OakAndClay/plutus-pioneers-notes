@@ -11,7 +11,7 @@ git clone https://github.com/input-output-hk/plutus-apps.git
 ```
 Check the cabal.project commit hash and checkout the correct version
 ```
-git checkout 41149926c108c71831cfe8d244c83b0ee4bf5c8a
+git checkout {correct version}
 ```
 
 

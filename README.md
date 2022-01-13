@@ -5,9 +5,15 @@
 * You can build it with command: `nix-build -A plutus.plutus-haddock-combined -o result/haddock`  
 * The documentation will be at `<dir plutus-repo>/result/haddock/share/doc/index.html`
 
+Clone the plutes-app repository
 ```
 git clone https://github.com/input-output-hk/plutus-apps.git
 ```
+Check the cabal.project commit hash and checkout the correct version
+```
+git checkout 41149926c108c71831cfe8d244c83b0ee4bf5c8a
+```
+
 
 ##### After building nix inside the plutus repo we can launch nix-shell within that directory. Open a terminal.
 

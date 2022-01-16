@@ -34,7 +34,7 @@ Open another terminal tab and activate another nix shell. Then lauch the client.
 ```
 cd ~/plutus && sudo nix-shell
 cd plutus-playground-client
-npm run start
+npm start
 ```
 
 Now we can open a browser and go to https://localhost:8009 to access Plutus Playground.

@@ -2,8 +2,11 @@
 ## Getting Started
 
 #### Build the docs that Lars is always referencing in the videos
-* You can build it with command: `nix-build -A plutus.plutus-haddock-combined -o result/haddock`  
-* The documentation will be at `<dir plutus-repo>/result/haddock/share/doc/index.html`
+```
+cd /Plutus/plutus-apps
+nix-shell
+build-and-serve-docs
+```
 
 Clone the plutes-app repository
 ```
@@ -17,7 +20,7 @@ git checkout {correct version}
 
 ##### After building nix inside the plutus repo we can launch nix-shell within that directory. Open a terminal.
 
-` cd ~/plutus && sudo nix-shell `
+` cd ~/Plutus/plutus-apps && sudo nix-shell `
 
 Then we can launch the plutus server.
 
